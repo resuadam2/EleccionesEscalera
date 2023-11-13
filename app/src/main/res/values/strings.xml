@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">EleccionesEscalera</string>
+    <string name="nif">NIF</string>
+    <string name="password">Contraseña</string>
+    <string name="entrar">LOGIN</string>
+    <string name="vota">VOTA</string>
+    <string name="formatoIncorrecto">Formato incorrecto</string>
+    <string name="usuarioYaHaVotado">Ya has votado</string>
+    <string name="usuarioPasswordIncorrecto">El nombre de usuario o la contraseña son incorrectos</string>
+    <string name="elijaSuVoto">Elija su voto</string>
 </resources>
