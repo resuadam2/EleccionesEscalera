@@ -29,7 +29,7 @@ public class AsistenteBD extends SQLiteOpenHelper {
         insertaDatosPartido("Un poquito de pofavoh", Color.RED, new String[]
                 {"Emilio Delgado", "Mariano Delgado", "Jose María"});
         insertaDatosPartido("Los pibes del videoclub", Color.YELLOW ,new String[]
-                {"Paco", "\"Josemi\" Cuesta", "Roberto"});
+                {"Paco", "Josemi Cuesta", "Roberto"});
         insertaDatosPartido("La pija y amigas", Color.rgb(255,128,0), new String[]
                 {"Lucia", "Belen", "Bea"});
         insertaDatosPartido("Radiopactos", Color.rgb(255,0,128), new String[]
