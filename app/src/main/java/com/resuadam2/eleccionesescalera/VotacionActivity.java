@@ -50,6 +50,11 @@ public class VotacionActivity extends AppCompatActivity {
         bd = new AsistenteBD(this).getReadableDatabase();
         listaCandidatos.setAdapter(new AdaptadorCandidatos(this, getDatosCandidatos()));
     }
+
+    /**
+     * Método que devuelve los datos de los candidatos
+     * @return Devuelve los datos de los candidatos
+     */
     private ArrayList<Candidato> getDatosCandidatos() {
         ArrayList<Candidato> listaCandidatos = new ArrayList<Candidato>();
         String sql = "SELECT codCandidato, candidatos.nombre AS nombre," +
@@ -71,10 +76,19 @@ public class VotacionActivity extends AppCompatActivity {
         return listaCandidatos ;
     }
     //v.1
+
+    /**
+     * Método que se ejecuta cuando se pulsa el botón de votar
+     */
     private void VotaManual() {
         Vota(++numVotos);
         if(numVotos==NUM_VOTOS) FinDeLaVotacion();
     }
+
+    /**
+     * Método que se ejecuta cuando se pulsa el botón de votar
+     * @param numVoto Número de voto
+     */
     private void Vota(int numVoto) {
         Candidato candidato = (Candidato) listaCandidatos.getSelectedItem();
         long codCandidato=candidato.getCodCandidato();
@@ -86,6 +100,10 @@ public class VotacionActivity extends AppCompatActivity {
         Toast.makeText(this,"Registrado voto " + numVoto+ " a " + candidato.toString(),
                 Toast.LENGTH_SHORT).show();
     }
+
+    /**
+     * Método que se ejecuta cuando se pulsa el botón de votar
+     */
     private void FinDeLaVotacion() {
         bd.beginTransaction();
         // Actualizamos los votos a los candidatos

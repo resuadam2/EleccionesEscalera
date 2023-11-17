@@ -6,13 +6,26 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteStatement;
 import android.graphics.Color;
 
+/**
+ * Clase que gestiona la creación y actualización de la BD
+ */
 public class AsistenteBD extends SQLiteOpenHelper {
     final static String NOMBRE_BD = "elecciones.sqlite";
     final static int VERSION_BD = 1;
     SQLiteStatement sqlInsertPartido, sqlInsertCandidato;
+
+    /**
+     * Constructor
+     * @param context Contexto de la aplicación
+     */
     public AsistenteBD(Context context) {
         super(context, NOMBRE_BD, null, VERSION_BD);
     }
+
+    /**
+     * Método que crea la BD
+     * @param db The database.
+     */
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE usuarios (NIF TEXT PRIMARY KEY, password TEXT, haVotado INTEGER)");
@@ -35,6 +48,13 @@ public class AsistenteBD extends SQLiteOpenHelper {
         insertaDatosPartido("Radiopactos", Color.rgb(255,0,128), new String[]
                 {"Concha", "Marisa", "Vicenta"});
     }
+
+    /**
+     * Método que inserta los datos de los partidos y sus candidatos
+     * @param nombrePartido Nombre del partido
+     * @param color Color del partido
+     * @param listaCandidatos Lista de candidatos del partido
+     */
     private void insertaDatosPartido(String nombrePartido, int color, String[] listaCandidatos){
         sqlInsertPartido.bindString(1, nombrePartido);
         sqlInsertPartido.bindLong(2, color);
@@ -45,6 +65,13 @@ public class AsistenteBD extends SQLiteOpenHelper {
             sqlInsertCandidato.execute();
         }
     }
+
+    /**
+     * Método que actualiza la BD
+     * @param db The database.
+     * @param oldVersion The old database version.
+     * @param newVersion The new database version.
+     */
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 //Gestionar la actualización del esquema y de los datos de la BD en el cambio de versión de la app

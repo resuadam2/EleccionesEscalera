@@ -12,6 +12,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+/**
+ * Actividad que gestiona la autentificación de los usuarios
+ */
 public class AutentificacionActivity extends AppCompatActivity {
     EditText etNif, etPassword;
     @Override
@@ -23,6 +26,10 @@ public class AutentificacionActivity extends AppCompatActivity {
         Button bEntrar = (Button) findViewById(R.id.bEntrar);
         bEntrar.setOnClickListener(v -> EntrarClic());
     }
+
+    /**
+     * Método que se ejecuta cuando se pulsa el botón de entrar
+     */
     public void EntrarClic() {
         String nif = etNif.getText().toString().trim().toUpperCase();
         String password = etPassword.getText().toString();
@@ -36,11 +43,23 @@ public class AutentificacionActivity extends AppCompatActivity {
         else
             Toast.makeText(this,errorAutentificacion,Toast.LENGTH_LONG).show();
     }
+
+    /**
+     * Método que abre la actividad de votación
+     * @param nif NIF del usuario
+     */
     private void AbrirVotacion(String nif) {
         Intent intent = new Intent(this, VotacionActivity.class);
         intent.putExtra("NIF",nif);
         startActivity(intent);
     }
+
+    /**
+     * Método que comprueba si el usuario puede entrar
+     * @param nif NIF del usuario
+     * @param password Contraseña del usuario
+     * @return Devuelve el mensaje de error, o '' si puede entrar
+     */
     @SuppressLint("Range")
     private String puedeEntrar(String nif, String password) {
         // Devuelve el mensaje de error, o '' si puede entrar
